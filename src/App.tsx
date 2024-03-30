@@ -2,6 +2,7 @@ import { RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "./utils/providers/theme";
 import { LanguageProvider } from "./utils/providers/language";
 import router from "./libs/router";
+import "./index.css";
 
 // only put providers here that need to be at the top level
 
