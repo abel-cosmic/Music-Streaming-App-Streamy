@@ -55,6 +55,7 @@ const Button = styled.button<ButtonProps>`
           border-width: 2px;
           border-color: var(--input);
           border-style: solid;
+          color: var(--foreground);
           &:hover {
             background-color: var(--accent);
             color: var(--accent-foreground);
