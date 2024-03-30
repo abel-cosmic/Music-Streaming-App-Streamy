@@ -19,7 +19,7 @@ const buttonVariants = css`
   font-size: 0.8rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  cursor: pointer; // Fix: Changed 'cursor-event' to 'cursor' and set value to 'pointer'
+  cursor: pointer;
   transition: background-color scale 0.15s ease-in-out, color 0.2s ease-in;
   &:active {
     scale: 0.95;
@@ -44,6 +44,7 @@ const Button = styled.button<ButtonProps>`
           box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1),
             0 1px 2px -1px rgb(0 0 0 / 0.1);
           border-radius: 0.375rem;
+          border: none;
           color: var(--secondary-foreground);
           &:hover {
             background-opacity: 0.8;
@@ -52,9 +53,10 @@ const Button = styled.button<ButtonProps>`
       case "outline":
         return css`
           background-color: var(--background);
-          border-width: 2px;
+          border-width: 1px;
           border-color: var(--input);
-          border-style: solid;
+          border: solid;
+          border-radius: var(--radius);
           color: var(--foreground);
           &:hover {
             background-color: var(--accent);
@@ -64,7 +66,7 @@ const Button = styled.button<ButtonProps>`
       case "ghost":
         return css`
         border:none;
-        background:
+        border-radius:var(--radius);
         &:hover {
             background-color: var(--accent)
             color:var(--accent-foreground)
@@ -80,7 +82,6 @@ const Button = styled.button<ButtonProps>`
             text-underline-offset: 4px;
           }
         `;
-      // Add other variants similarly
       default:
         return css`
           background-color: var(--primary);
