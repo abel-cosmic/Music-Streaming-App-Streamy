@@ -34,11 +34,9 @@ const Button = styled.button<ButtonProps>`
       case "destructive":
         return css`
           background-color: var(--destructive);
-          box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1),
-            0 1px 2px -1px rgb(0 0 0 / 0.1);
           border-radius: 0.375rem;
+          border: none;
           color: var(--destructive-foreground);
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         `;
       case "secondary":
         return css`
