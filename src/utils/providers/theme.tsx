@@ -1,49 +1,27 @@
-import { createContext, useContext, useEffect, useState } from "react";
-
-const initialState: ThemeProviderState = {
-  theme: "dark",
-  setTheme: () => null,
-};
-
-const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
-
-export function ThemeProvider({
-  children,
-  defaultTheme = "light",
-  storageKey = "vite-ui-theme",
-  ...props
-}: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
-  );
-
-  useEffect(() => {
-    const root = window.document.documentElement;
-
-    root.classList.remove("light", "dark");
-    root.classList.add(theme);
-  }, [theme]);
-
-  const value = {
-    theme,
-    setTheme: (theme: Theme) => {
-      setTheme(theme);
-      localStorage.setItem(storageKey, theme);
+export const theme = {
+    colors: {
+      primary: '#f1faee',
+      secondary: '#457b9d',
+      tertiary: '#a8dadc',
+      background: '#1d3557',
+      text: '#f1faee',
+      primaryTextColor: '#594F43',
+      secondaryTextColor: '#777777',
+      inputPlaceholder: '#C7C7C7',
+      darkGrayText: '#303030',
+      darkText: '#f1faee',
+      black: '#000000',
+      white: '#ffffff',
     },
+    paddings: {
+      container: '15px',
+      pageTop: '30px',
+    },
+    fonts: {
+      xs: '0.8rem',
+      sm: '0.9rem',
+      base: '1rem',
+      md: '1.2rem'
+    }
   };
-
-  return (
-    <ThemeProviderContext.Provider {...props} value={value}>
-      {children}
-    </ThemeProviderContext.Provider>
-  );
-}
-
-export const useTheme = () => {
-  const context = useContext(ThemeProviderContext);
-
-  if (context === undefined)
-    throw new Error("useTheme must be used within a ThemeProvider");
-
-  return context;
-};
+  
